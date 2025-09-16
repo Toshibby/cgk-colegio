@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ms-registry-server
+    name: cgk-registry-server
   profiles:
     active: development
   config:
