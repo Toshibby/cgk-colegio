@@ -1,0 +1,38 @@
+server:
+  port: 9090
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka
+  instance:
+    hostname: localhost
+
+
+spring:
+  application:
+    name: cgk-gateway
+
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: cgk-curso
+              uri: lb://cgk-curso
+              predicates:
+                - Path=/cursos/**,/profesores/**
+
+
+
+
+            - id: cgk-matricula
+              uri: lb://cgk-matricula
+              predicates:
+                - Path=/matriculas/**, /estudiantes/**

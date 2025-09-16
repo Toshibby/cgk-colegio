@@ -48,7 +48,7 @@ public class CursoServiceImpl implements CursoService {
                     c.setHorario(curso.getHorario());
                     c.setCupoMaximo(curso.getCupoMaximo());
                     c.setCategoria(curso.getCategoria());
-                    c.setProfesorId(curso.getProfesorId());  // Asignamos el ID del profesor
+                    c.setProfesor(curso.getProfesor());  // Asignamos el objeto Profesor
                     return cursoRepository.save(c);
                 })
                 .orElseThrow(() -> new RuntimeException("Curso no encontrado"));

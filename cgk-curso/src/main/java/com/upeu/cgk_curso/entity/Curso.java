@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "cursos")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "cursos")
 public class Curso {
 
     @Id
@@ -40,7 +40,9 @@ public class Curso {
     @Column(nullable = false, length = 50, name = "categoria_curso")
     private String categoria;
 
-    // Atributo solo para almacenar el ID del Profesor
-    @Column(name = "id_profesor")
-    private Long profesorId;
+    // Relación Many-to-One con Profesor
+    @ManyToOne
+    @JoinColumn(name = "id_profesor", nullable = false)
+    private Profesor profesor;
+
 }
